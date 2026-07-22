@@ -116,8 +116,8 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Toggle pill */}
-          <div className={`flex rounded-full p-[3px] gap-[2px] transition-colors duration-500 ${
+          {/* Toggle pill — desktop only; mobile has its own toggle inside the hamburger menu */}
+          <div className={`hidden md:flex rounded-full p-[3px] gap-[2px] transition-colors duration-500 ${
             isConst ? 'bg-concrete-deep' : 'bg-sand-dark'
           }`}>
             <button
@@ -163,12 +163,45 @@ export default function Navbar() {
             onClick={() => setMobileOpen(true)}
             aria-label="Open navigation menu"
             aria-expanded={mobileOpen}
-            className="md:hidden flex flex-col justify-center gap-1.5 p-2"
+            className="md:hidden flex flex-col justify-center gap-1.5 p-2 shrink-0"
           >
             <span className={`w-6 h-px block ${(solid && !isConst) ? 'bg-brown-deep' : 'bg-sand'}`} />
             <span className={`w-4 h-px block ${(solid && !isConst) ? 'bg-brown-deep' : 'bg-sand'}`} />
             <span className={`w-6 h-px block ${(solid && !isConst) ? 'bg-brown-deep' : 'bg-sand'}`} />
           </button>
+        </div>
+
+        {/* Mobile toggle row — kept visible on the main screen (not tucked inside the
+            hamburger menu) so every visitor immediately sees both companies. */}
+        <div className="md:hidden flex justify-center pb-3">
+          <div className={`flex rounded-full p-[3px] gap-[2px] transition-colors duration-500 ${
+            isConst ? 'bg-concrete-deep' : 'bg-sand-dark'
+          }`}>
+            <button
+              onClick={() => router.push('/')}
+              aria-pressed={!isConst}
+              aria-label="Switch to Architecture mode"
+              className={`font-sans text-[9px] tracking-[2px] uppercase px-4 py-[6px] rounded-full transition-all duration-300 ${
+                !isConst
+                  ? 'bg-white text-brown-deep shadow-sm font-semibold'
+                  : 'text-brown-light hover:text-brown-mid bg-transparent'
+              }`}
+            >
+              Architecture
+            </button>
+            <button
+              onClick={() => router.push('/construction')}
+              aria-pressed={isConst}
+              aria-label="Switch to Construction mode"
+              className={`font-sans text-[9px] tracking-[2px] uppercase px-4 py-[6px] rounded-full transition-all duration-300 ${
+                isConst
+                  ? 'bg-cement text-concrete shadow-sm font-bold'
+                  : 'text-brown-light hover:text-brown-mid bg-transparent'
+              }`}
+            >
+              Construction
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -189,31 +222,7 @@ export default function Navbar() {
             Close
           </button>
 
-          {/* Mobile mode toggle */}
-          <div className="flex rounded-full bg-concrete-deep p-[3px] gap-[2px] mb-10">
-            <button
-              onClick={() => { router.push('/'); setMobileOpen(false) }}
-              aria-pressed={!isConst}
-              aria-label="Switch to Architecture mode"
-              className={`font-sans text-[8px] tracking-[2px] uppercase px-4 py-2 rounded-full transition-all duration-300 ${
-                !isConst ? 'bg-white text-brown-deep font-semibold' : 'text-[#888]'
-              }`}
-            >
-              Architecture
-            </button>
-            <button
-              onClick={() => { router.push('/construction'); setMobileOpen(false) }}
-              aria-pressed={isConst}
-              aria-label="Switch to Construction mode"
-              className={`font-sans text-[8px] tracking-[2px] uppercase px-4 py-2 rounded-full transition-all duration-300 ${
-                isConst ? 'bg-cement text-concrete font-bold' : 'text-[#888]'
-              }`}
-            >
-              Construction
-            </button>
-          </div>
-
-          <ul className="flex flex-col items-center gap-8">
+          <ul className="flex flex-col items-center gap-8 mt-10">
             {links.map(({ href, label }) => (
               <li key={href}>
                 <Link

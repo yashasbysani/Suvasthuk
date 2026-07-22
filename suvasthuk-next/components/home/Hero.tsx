@@ -110,7 +110,7 @@ export default function Hero() {
       </div>
 
       {/* ── Main content ── */}
-      <div className="relative z-20 flex-1 flex flex-col justify-between px-6 md:px-14 pt-32 pb-0">
+      <div className="relative z-20 flex-1 flex flex-col justify-between px-6 md:px-14 pt-40 md:pt-32 pb-0">
 
         {/* Headline block */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">

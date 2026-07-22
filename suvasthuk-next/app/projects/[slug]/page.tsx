@@ -93,7 +93,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             priority
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <p className="font-sans text-[9px] tracking-[4px] uppercase text-gold mb-3 capitalize">{project.category}</p>
           <h1 className="font-serif text-3xl md:text-5xl font-normal text-sand max-w-2xl leading-tight">
