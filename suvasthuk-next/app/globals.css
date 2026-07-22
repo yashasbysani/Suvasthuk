@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-sand text-brown-deep font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* Hover ring effect on project/gallery images */
+  [data-cursor="view"] {
+    position: relative;
+  }
+  [data-cursor="view"]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+  [data-cursor="view"]:hover::after {
+    border-color: rgba(196, 168, 130, 0.6); /* gold/60 */
+  }
+}
+
+/* Page transition fade-in */
+.page-fade {
+  animation: fadeIn 0.7s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
