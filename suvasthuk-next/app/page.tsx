@@ -26,7 +26,7 @@ export default async function HomePage() {
       <ServicesGrid />
       <ProjectsMosaic projects={projects} />
       <Testimonial testimonials={testimonials} />
-      <BlogPreview posts={posts.slice(0, 3)} />
+      <BlogPreview posts={posts.slice(0, 3)} totalCount={posts.length} />
       <CtaBand />
     </main>
   )

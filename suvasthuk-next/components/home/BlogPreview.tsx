@@ -37,15 +37,16 @@ const STATIC_FALLBACK: BlogPostItem[] = [
   },
 ]
 
-export default function BlogPreview({ posts }: { posts: BlogPostItem[] }) {
+export default function BlogPreview({ posts, totalCount }: { posts: BlogPostItem[]; totalCount?: number }) {
   const list = posts.length ? posts : STATIC_FALLBACK
+  const count = totalCount || list.length
 
   return (
     <section className="py-20 md:py-28 bg-sand-dark">
       <div className="max-w-content mx-auto px-6">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-4">
           <ScrollReveal>
-            <SectionHeading tag="Insights" title="From our <strong>studio</strong>" />
+            <SectionHeading tag="Insights" title={`From our <strong>studio</strong> <span class="text-brown-light text-xl md:text-2xl align-middle">(${count})</span>`} />
           </ScrollReveal>
           <Link
             href="/blog"
@@ -89,6 +90,16 @@ export default function BlogPreview({ posts }: { posts: BlogPostItem[] }) {
             )
           })}
         </div>
+        <ScrollReveal delay={0.2}>
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/blog"
+              className="inline-block bg-brown-deep text-sand font-sans font-semibold text-[11px] tracking-[2px] uppercase px-8 py-4 rounded hover:bg-brown-mid transition-colors"
+            >
+              View all posts
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )
