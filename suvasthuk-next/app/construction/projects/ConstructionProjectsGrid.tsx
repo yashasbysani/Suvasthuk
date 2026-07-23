@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link         from 'next/link'
 import Image        from 'next/image'
 import ScrollReveal from '@/components/animations/ScrollReveal'
+import PhotoCountBadge from '@/components/ui/PhotoCountBadge'
 import { urlFor }   from '@/sanity/lib/queries'
 import type { ConstructionProject } from '@/sanity/lib/queries'
 
@@ -90,8 +91,9 @@ export default function ConstructionProjectsGrid({ initialProjects }: { initialP
                 ) : (
                   <div className="aspect-video bg-gradient-to-br from-cement/20 to-cement-dark/30" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-concrete/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-concrete/70 via-transparent to-transparent" />
+                <PhotoCountBadge count={p.photoCount} />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
                   <p className="font-sans text-[8px] tracking-[3px] uppercase text-cement/70 mb-1 capitalize">{p.category}</p>
                   <p className="font-serif text-base text-[#f0ede8]">{p.title}</p>
                 </div>

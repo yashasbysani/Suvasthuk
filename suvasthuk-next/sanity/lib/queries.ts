@@ -9,14 +9,16 @@ export const urlFor = (source: SanityImageSource) => builder.image(source)
 export async function getFeaturedProjects() {
   if (!isSanityConfigured) return []
   return client.fetch(`*[_type=="project" && featured==true] | order(_createdAt desc) [0..4] {
-    title, slug, category, coverImage
+    title, slug, category, coverImage,
+    "photoCount": count(gallery) + select(defined(coverImage) => 1, 0)
   }`)
 }
 
 export async function getAllProjects() {
   if (!isSanityConfigured) return []
   return client.fetch(`*[_type=="project"] | order(year desc) {
-    title, slug, category, area, location, year, coverImage
+    title, slug, category, area, location, year, coverImage,
+    "photoCount": count(gallery) + select(defined(coverImage) => 1, 0)
   }`)
 }
 
@@ -72,13 +74,15 @@ export type ConstructionProject = {
   area?:          string
   completionYear?: number
   description?:   string
+  photoCount?:    number
 }
 
 export async function getFeaturedConstructionProjects(): Promise<ConstructionProject[]> {
   if (!isSanityConfigured) return []
   return client.fetch(
     `*[_type=="constructionProject"] | order(_createdAt desc)[0...5] {
-      title, slug, category, coverImage, location, area, completionYear, description
+      title, slug, category, coverImage, location, area, completionYear, description,
+      "photoCount": count(body[_type=="image"]) + select(defined(coverImage) => 1, 0)
     }`
   )
 }
@@ -87,7 +91,8 @@ export async function getAllConstructionProjects(): Promise<ConstructionProject[
   if (!isSanityConfigured) return []
   return client.fetch(
     `*[_type=="constructionProject"] | order(_createdAt desc) {
-      title, slug, category, coverImage, location, area, completionYear, description
+      title, slug, category, coverImage, location, area, completionYear, description,
+      "photoCount": count(body[_type=="image"]) + select(defined(coverImage) => 1, 0)
     }`
   )
 }

@@ -2,6 +2,7 @@ import Link         from 'next/link'
 import Image        from 'next/image'
 import ScrollReveal   from '@/components/animations/ScrollReveal'
 import SectionHeading from '@/components/ui/SectionHeading'
+import PhotoCountBadge from '@/components/ui/PhotoCountBadge'
 import { urlFor }   from '@/sanity/lib/queries'
 
 type SanityProject = {
@@ -10,6 +11,7 @@ type SanityProject = {
   category: string
   coverImage?: { asset: { _ref: string }; hotspot?: unknown }
   localImage?: string
+  photoCount?: number
 }
 
 const FALLBACK: SanityProject[] = []
@@ -44,6 +46,7 @@ function ProjectCard({
           <div className="absolute inset-0 bg-gradient-to-br from-gold/30 to-gold-dark/60 group-hover:scale-105 transition-transform duration-500" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" />
+        <PhotoCountBadge count={project.photoCount} />
         <div className="absolute bottom-0 left-0 right-0 p-6">
           <p className="font-sans text-[8px] tracking-[3px] uppercase text-sand/60 mb-1 capitalize">
             {project.category}

@@ -1,5 +1,6 @@
 import Link  from 'next/link'
 import Image from 'next/image'
+import PhotoCountBadge from '@/components/ui/PhotoCountBadge'
 import { urlFor } from '@/sanity/lib/queries'
 
 interface Props {
@@ -8,9 +9,10 @@ interface Props {
   category:    string
   coverImage?: unknown
   localImage?: string
+  photoCount?: number
 }
 
-export default function ProjectCard({ title, slug, category, coverImage, localImage }: Props) {
+export default function ProjectCard({ title, slug, category, coverImage, localImage, photoCount }: Props) {
   const imgSrc = coverImage
     ? urlFor(coverImage as Parameters<typeof urlFor>[0]).width(700).url()
     : localImage ?? null
@@ -34,8 +36,9 @@ export default function ProjectCard({ title, slug, category, coverImage, localIm
       ) : (
         <div className="aspect-video bg-gradient-to-br from-gold/20 to-gold-dark/30" />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" />
+      <PhotoCountBadge count={photoCount} />
+      <div className="absolute bottom-0 left-0 right-0 p-5">
         <p className="font-sans text-[8px] tracking-[3px] uppercase text-sand/60 mb-1 capitalize">{category}</p>
         <p className="font-serif text-base text-sand">{title}</p>
       </div>

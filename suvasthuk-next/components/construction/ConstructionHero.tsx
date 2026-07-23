@@ -6,10 +6,10 @@ import Image from 'next/image'
 import gsap  from 'gsap'
 
 const STATS = [
-  { value: '30+',   label: 'Years Experience'  },
-  { value: '826+',  label: 'Happy Clients'     },
-  { value: '1024+', label: 'Projects Built'    },
-  { value: '12+',   label: 'Service Areas'     },
+  { value: '15+',  label: 'Years Experience'      },
+  { value: '90+',  label: 'Happy Clients'         },
+  { value: '100+', label: 'Construction Projects' },
+  { value: '10+',  label: 'Service Areas'         },
 ]
 
 export default function ConstructionHero() {
@@ -64,7 +64,7 @@ export default function ConstructionHero() {
 
       {/* Bengaluru badge */}
       <div className="absolute top-24 right-6 z-20 border border-cement/30 rounded-full px-4 py-1.5 bg-cement/10 backdrop-blur-sm">
-        <span className="font-sans text-[9px] tracking-[3px] uppercase text-cement">Bengaluru · Est. 1993</span>
+        <span className="font-sans text-[9px] tracking-[3px] uppercase text-cement">Bengaluru · Est. 2011</span>
       </div>
 
       {/* Main content */}

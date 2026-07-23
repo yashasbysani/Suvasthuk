@@ -15,12 +15,12 @@ export const revalidate = 3600 // re-generate at most once an hour
 export const metadata: Metadata = {
   title: 'Construction Company in Bengaluru',
   description:
-    'Trusted construction company in Bengaluru since 1993. Residential, commercial & turnkey construction. 1024+ projects delivered. Get a free quote.',
+    'Trusted construction company in Bengaluru since 2011. Residential, commercial & turnkey construction. 100+ projects delivered. Get a free quote.',
   alternates: { canonical: 'https://suvasthuk.com/construction' },
   openGraph: {
     url: 'https://suvasthuk.com/construction',
     title: 'Construction Company in Bengaluru | Suvasthuk Architects',
-    description: 'Trusted construction company in Bengaluru since 1993. 1024+ projects delivered.',
+    description: 'Trusted construction company in Bengaluru since 2011. 100+ projects delivered.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },
 }
@@ -42,7 +42,7 @@ export default async function ConstructionPage() {
             name: 'Suvasthuk Architects — Construction',
             url: 'https://suvasthuk.com/construction',
             description:
-              'Trusted construction company in Bengaluru since 1993. Residential, commercial & turnkey construction.',
+              'Trusted construction company in Bengaluru since 2011. Residential, commercial & turnkey construction.',
             parentOrganization: { '@id': 'https://suvasthuk.com/#business' },
             areaServed: [
               { '@type': 'City',  name: 'Bengaluru' },

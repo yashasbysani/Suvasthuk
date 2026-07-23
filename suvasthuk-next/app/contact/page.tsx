@@ -140,19 +140,6 @@ export default function ContactPage() {
               rating={5}
               href="https://share.google/FReltVZvNDolwgFtU"
             />
-
-            {/* Map */}
-            <div className="rounded-lg overflow-hidden h-64">
-              <iframe
-                title="Suvasthuk Architects office location"
-                src="https://www.google.com/maps?q=Suvasthuk+Architects,+F6+17/2,+1st+Floor,+Kodigehalli+Main+Rd,+Sahakar+Nagar,+Bengaluru+560092&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
           </div>
 
           {/* Form */}
