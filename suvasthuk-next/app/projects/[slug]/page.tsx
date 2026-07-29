@@ -21,11 +21,17 @@ export async function generateMetadata(
   const { slug } = await params
   const project = await getProjectBySlug(slug).catch(() => null)
   if (!project) return {}
-  const description = project.seoDescription
-    ?? `${project.category} project in ${project.location ?? 'Bengaluru'} by Suvasthuk Architects.`
   const categoryLabel = project.category
     ? project.category.charAt(0).toUpperCase() + project.category.slice(1)
     : null
+  const description = project.seoDescription
+    ?? [
+      `${project.title} —`,
+      categoryLabel ? `a ${categoryLabel.toLowerCase()} project` : 'a project',
+      project.location ? `in ${project.location}` : 'in Bengaluru',
+      project.area ? `(${project.area})` : null,
+      project.year ? `completed ${project.year}` : null,
+    ].filter(Boolean).join(' ') + ', by Suvasthuk Architects.'
   const title = project.seoTitle
     ?? (categoryLabel
       ? `${project.title} — ${categoryLabel} Project in Bengaluru`

@@ -119,9 +119,9 @@ export default function Hero() {
               Architecture &amp; Design · Bangalore
             </p>
             <h1 ref={titleRef} className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal text-sand leading-[1.0] max-w-3xl mx-auto md:mx-0">
-              We shape spaces{' '}
+              Architects in Bengaluru{' '}
               <br />
-              <em>that define lives.</em>
+              <em>Crafting Iconic Spaces Since 1993</em>
             </h1>
           </div>
 

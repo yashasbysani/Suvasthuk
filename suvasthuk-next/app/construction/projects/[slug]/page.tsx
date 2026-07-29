@@ -49,8 +49,33 @@ export default async function ConstructionCaseStudyPage(
     ? urlFor(project.coverImage).width(1400).height(700).url()
     : null
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home',         item: 'https://suvasthuk.com' },
+      { '@type': 'ListItem', position: 2, name: 'Construction', item: 'https://suvasthuk.com/construction' },
+      { '@type': 'ListItem', position: 3, name: 'Projects',     item: 'https://suvasthuk.com/construction/projects' },
+      { '@type': 'ListItem', position: 4, name: project.title,  item: `https://suvasthuk.com/construction/projects/${slug}` },
+    ],
+  }
+
+  const creativeWorkSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.description ?? `${project.title} — construction case study by Suvasthuk Architects`,
+    url: `https://suvasthuk.com/construction/projects/${slug}`,
+    creator: { '@id': 'https://suvasthuk.com/#business' },
+    ...(project.location && { locationCreated: { '@type': 'Place', name: project.location } }),
+    ...(project.completionYear && { dateCreated: String(project.completionYear) }),
+    ...(project.category && { genre: project.category }),
+  }
+
   return (
     <main id="main-content" className="bg-concrete min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }} />
       {/* Hero */}
       <div className="relative h-[55vh] min-h-[400px] bg-concrete-deep overflow-hidden">
         {heroUrl ? (

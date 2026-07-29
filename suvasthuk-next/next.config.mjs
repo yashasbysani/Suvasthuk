@@ -43,6 +43,15 @@ const nextConfig = {
         destination: '/construction',
         permanent: true,
       },
+      // Legacy GitHub Pages ("Mosaic" Bootstrap template) URLs — pre-migration, Google
+      // still has some of these indexed (confirmed via GSC URL Inspection).
+      { source: '/index.html',    destination: '/',         permanent: true },
+      { source: '/about.html',    destination: '/about',    permanent: true },
+      { source: '/services.html', destination: '/services', permanent: true },
+      { source: '/contact.html',  destination: '/contact',  permanent: true },
+      { source: '/blog.html',     destination: '/blog',     permanent: true },
+      { source: '/projects.html', destination: '/projects', permanent: true },
+      { source: '/team.html',     destination: '/about',    permanent: true },
     ]
   },
 }

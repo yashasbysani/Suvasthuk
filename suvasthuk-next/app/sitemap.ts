@@ -36,8 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/contact`,                lastModified: SITE_LAUNCH,  changeFrequency: 'monthly', priority: 0.7  },
     { url: `${BASE}/construction`,           lastModified: CONTENT_DATE, changeFrequency: 'weekly',  priority: 0.95 },
     { url: `${BASE}/construction/projects`,  lastModified: CONTENT_DATE, changeFrequency: 'weekly',  priority: 0.85 },
-    // Yashas Construction storefront hub. NOTE: /construction/services currently redirect()s to
-    // /construction — it MUST be converted to a real hub page (roadmap task) for this entry to be valid.
+    // Yashas Construction storefront hub — real 200 page, see app/construction/services/page.tsx.
     { url: `${BASE}/construction/services`,  lastModified: CONTENT_DATE, changeFrequency: 'monthly', priority: 0.80 },
     { url: `${BASE}/privacy-policy`,         lastModified: CONTENT_DATE, changeFrequency: 'yearly',  priority: 0.3  },
   ]

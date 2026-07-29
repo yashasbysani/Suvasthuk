@@ -237,13 +237,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const s = SERVICES.find(x => x.slug === slug)
   if (!s) return {}
+  const strippedTitle = s.seoTitle.replace(/\s*\|\s*Suvasthuk.*$/i, '').trim()
   return {
-    title: s.seoTitle.replace(/\s*\|\s*Suvasthuk.*$/i, '').trim(),
+    title: strippedTitle,
     description: s.seoDesc,
     alternates: { canonical: `https://suvasthuk.com/construction/services/${slug}` },
     openGraph: {
       url: `https://suvasthuk.com/construction/services/${slug}`,
-      title: s.seoTitle,
+      title: strippedTitle,
       description: s.seoDesc,
       images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     },
@@ -262,12 +263,45 @@ export default async function ConstructionServicePage({ params }: { params: Prom
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home',         item: 'https://suvasthuk.com' },
+              { '@type': 'ListItem', position: 2, name: 'Construction', item: 'https://suvasthuk.com/construction' },
+              { '@type': 'ListItem', position: 3, name: 'Services',     item: 'https://suvasthuk.com/construction/services' },
+              { '@type': 'ListItem', position: 4, name: s.name,         item: `https://suvasthuk.com/construction/services/${slug}` },
+            ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
             '@type': 'FAQPage',
             mainEntity: s.faq.map((f: { q: string; a: string }) => ({
               '@type': 'Question',
               name: f.q,
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            serviceType: s.name,
+            name: s.name,
+            description: s.seoDesc,
+            provider: { '@id': 'https://suvasthuk.com/#business' },
+            areaServed: [
+              { '@type': 'City',  name: 'Bengaluru' },
+              { '@type': 'State', name: 'Karnataka' },
+            ],
+            url: `https://suvasthuk.com/construction/services/${slug}`,
           }),
         }}
       />

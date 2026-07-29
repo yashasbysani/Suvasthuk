@@ -23,11 +23,11 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Suvasthuk Architects — Architects in Bengaluru Since 1993',
+    default: 'Architects in Bengaluru | Suvasthuk Architects — Est. 1993',
     template: '%s — Suvasthuk Architects',
   },
   description:
-    'Trusted architecture firm in Bengaluru since 1993. Residential, commercial & interior design. 30+ years, 1000+ projects. Get a free consultation.',
+    'Suvasthuk Architects — an established architecture firm in Bengaluru since 1993. Residential, commercial & interior design, 30+ years of experience.',
   metadataBase: new URL('https://suvasthuk.com'),
   alternates: { canonical: 'https://suvasthuk.com' },
   openGraph: {

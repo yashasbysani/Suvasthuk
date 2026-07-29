@@ -1,3 +1,5 @@
+import { SCHEMA_AREA_SERVED } from '@/lib/serviceAreas'
+
 export default function LocalBusinessSchema() {
   const professionalService = {
     '@context': 'https://schema.org',
@@ -31,10 +33,7 @@ export default function LocalBusinessSchema() {
     ],
     foundingDate: '1993',
     priceRange: '₹₹₹',
-    areaServed: [
-      { '@type': 'City',  name: 'Bengaluru' },
-      { '@type': 'State', name: 'Karnataka' },
-    ],
+    areaServed: SCHEMA_AREA_SERVED,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Architecture & Design Services',

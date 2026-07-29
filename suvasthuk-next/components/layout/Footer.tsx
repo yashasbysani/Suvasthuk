@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSiteMode } from '@/context/SiteModeContext'
+import { SERVICE_AREA_ZONES } from '@/lib/serviceAreas'
 
 export default function Footer() {
   const isConst = useSiteMode() === 'construction'
@@ -86,6 +87,23 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Service Areas — ordered starting from the primary North Bangalore hub */}
+        <div className="border-t border-sand/5 pt-8 pb-2 mb-4">
+          <p className="font-sans text-[9px] tracking-[3px] uppercase text-sand/30 mb-4">
+            Serving Bengaluru &amp; Surrounding Areas
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+            {SERVICE_AREA_ZONES.map(({ zone, neighborhoods }) => (
+              <div key={zone}>
+                <p className="font-sans text-[11px] font-semibold text-sand/50 mb-1">{zone}</p>
+                <p className="font-sans text-[12px] text-sand/30 leading-relaxed">
+                  {neighborhoods.join(', ')}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 

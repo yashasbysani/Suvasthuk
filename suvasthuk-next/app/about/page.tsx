@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://suvasthuk.com/about' },
   openGraph: {
     url: 'https://suvasthuk.com/about',
-    title: 'About Suvasthuk Architects — Architecture Firm in Bengaluru Since 1993',
+    title: 'About — Architecture Firm in Bengaluru Since 1993',
     description: 'Suvasthuk Architects — a Bengaluru-based architecture and design practice founded in 1993 by B K Muralidhar. 30+ years, 1000+ projects.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },

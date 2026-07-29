@@ -8,8 +8,11 @@ interface Props {
   modifiedAt?: string
 }
 
+const ORG_NAME = 'Suvasthuk Architects'
+
 export default function ArticleSchema({ title, description, imageUrl, author, slug, publishedAt, modifiedAt }: Props) {
   const canonicalUrl = `https://suvasthuk.com/blog/${slug}`
+  const isOrgAuthor = !author || author.trim().toLowerCase() === ORG_NAME.toLowerCase()
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -21,9 +24,9 @@ export default function ArticleSchema({ title, description, imageUrl, author, sl
       '@id': canonicalUrl,
     },
     ...(imageUrl && { image: imageUrl }),
-    author: author
-      ? { '@type': 'Person', name: author }
-      : { '@type': 'Organization', name: 'Suvasthuk Architects', url: 'https://suvasthuk.com' },
+    author: isOrgAuthor
+      ? { '@type': 'Organization', name: ORG_NAME, url: 'https://suvasthuk.com' }
+      : { '@type': 'Person', name: author },
     publisher: {
       '@type': 'Organization',
       name: 'Suvasthuk Architects',

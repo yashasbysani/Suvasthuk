@@ -22,6 +22,7 @@ export default async function ConstructionProjectsPage() {
   return (
     <main id="main-content" className="pt-24 pb-20 bg-concrete min-h-screen">
       <div className="max-w-content mx-auto px-6">
+        <h1 className="sr-only">Construction Portfolio in Bengaluru</h1>
         <div className="mb-12">
           <SectionHeading tag="Our Work" title="Construction case studies" />
         </div>
