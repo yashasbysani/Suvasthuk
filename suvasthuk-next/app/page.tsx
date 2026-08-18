@@ -7,7 +7,6 @@ import Testimonial    from '@/components/home/Testimonial'
 import BlogPreview    from '@/components/home/BlogPreview'
 import CtaBand        from '@/components/home/CtaBand'
 import { getFeaturedProjects, getTestimonials, getAllBlogPosts } from '@/sanity/lib/queries'
-import { Analytics } from '@vercel/analytics/next';
 
 
 export const revalidate = 3600 // ISR: re-generate at most once an hour
@@ -22,7 +21,6 @@ export default async function HomePage() {
 
   return (
     <main id="main-content">
-      <Analytics />
       <Hero />
       <Marquee />
       <AboutStrip />

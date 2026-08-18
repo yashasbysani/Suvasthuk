@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Libre_Baskerville, DM_Sans } from 'next/font/google'
 import './globals.css'
 import LenisProvider  from '@/components/animations/LenisProvider'
 import SiteShell      from '@/components/layout/SiteShell'
 import LocalBusinessSchema  from '@/components/seo/LocalBusinessSchema'
 import { SiteModeProvider } from '@/context/SiteModeContext'
+import { Analytics } from '@vercel/analytics/next'
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
@@ -61,6 +63,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${libreBaskerville.variable} ${dmSans.variable}`}
     >
       <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-SZ01F6YB1D"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SZ01F6YB1D');
+          `}
+        </Script>
         <link rel="preconnect" href="https://cdn.sanity.io" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
@@ -71,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <SiteShell>{children}</SiteShell>
           </SiteModeProvider>
         </LenisProvider>
+        <Analytics />
       </body>
     </html>
   )
